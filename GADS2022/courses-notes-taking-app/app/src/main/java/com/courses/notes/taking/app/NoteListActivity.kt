@@ -1,12 +1,10 @@
 package com.courses.notes.taking.app
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.courses.notes.taking.app.databinding.ActivityNoteListBinding
 
 class NoteListActivity : AppCompatActivity() {
@@ -22,19 +20,24 @@ class NoteListActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_note_list)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-    }
+            val activityIntent = Intent(this, MainActivity::class.java)
+            startActivity(activityIntent)
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_note_list)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+        }
+
+        /*
+         * Populate views.
+         */
+
+        /* Set up listview. */
+        // Attach adapter to listview
+        binding.includeContentNodeList.listNotesListView.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            DataManager.notes
+        )
     }
 }
