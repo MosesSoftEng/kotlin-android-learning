@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
          */
         var notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
 
-//        if(notePosition != -1)
-//            displayNote(notePosition)
+        if(notePosition != -1)
+            displayNote(notePosition)
 
         /*
          * Binding views
@@ -69,11 +69,16 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 
-//    private fun displayNote(notePosition: Int) {
-//        val note = DataManager.notes.get(notePosition)
-//        binding.includeContentMain.noteTitleEditText.setText(note.title)
-//        binding.includeContentMain.noteTextEditText.setText(note.note)
-//    }
+    private fun displayNote(notePosition: Int) {
+        val note = DataManager.notes.get(notePosition)
+        binding.includeContentMain.noteTitleEditText.setText(note.title)
+        binding.includeContentMain.noteTextEditText.setText(note.note)
+
+        /* Set spinner active item */
+        // Get Course position
+        val coursePosition = DataManager.courses.values.indexOf(note.courseInfo)
+        binding.includeContentMain.spinnerCourses.setSelection(coursePosition)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
