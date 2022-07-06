@@ -1,12 +1,8 @@
 package com.courses.notes.taking.app
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
@@ -19,6 +15,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /*
+         * Get passed data via intent
+         */
+        var notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
+
+//        if(notePosition != -1)
+//            displayNote(notePosition)
 
         /*
          * Binding views
@@ -64,6 +68,12 @@ class MainActivity : AppCompatActivity() {
 //                .setAction("Action", null).show()
 //        }
     }
+
+//    private fun displayNote(notePosition: Int) {
+//        val note = DataManager.notes.get(notePosition)
+//        binding.includeContentMain.noteTitleEditText.setText(note.title)
+//        binding.includeContentMain.noteTextEditText.setText(note.note)
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
