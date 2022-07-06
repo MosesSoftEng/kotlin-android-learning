@@ -21,7 +21,8 @@ class NoteListActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         binding.fab.setOnClickListener { view ->
-            val activityIntent = Intent(this, MainActivity::class.java)
+            val activityIntent =
+                Intent(this, MainActivity::class.java) // Add .java for compatibility
             startActivity(activityIntent)
 
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -39,5 +40,17 @@ class NoteListActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1,
             DataManager.notes
         )
+
+        // Attach item click listener event for each listview item
+        binding.includeContentNodeList.listNotesListView.setOnItemClickListener {
+            /* Using a lambda function */
+            parent, view, position, id /* parameters */->
+
+            /* Intent Extra */
+            val activityIntent =
+                Intent(this, MainActivity::class.java) // Add .java for compatibility
+            activityIntent.putExtra(EXTRA_NOTE_POSITION, position)
+            startActivity(activityIntent)
+        }
     }
 }
