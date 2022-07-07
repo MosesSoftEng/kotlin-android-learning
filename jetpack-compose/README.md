@@ -4,8 +4,7 @@ Toolkit for building native Android UI using composable functions which define y
 ## Why Jetpack Compose
 Simplifies and accelerates UI development on Android with less code, powerful tools, and intuitive Kotlin APIs.
 
-## Create a compsable function using @Composable annotation
-
+## Create a composable function using @Composable annotation
 
 ## Create a composable android studio project
 New project, jetpack compose
