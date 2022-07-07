@@ -3,6 +3,7 @@ package com.courses.notes.taking.jetpackcomposeproject01
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,8 +29,10 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun MessageCard(message: Message) {
         /* Set text for content block */
-        Text(text = message.author)
-        Text(text = message.body)
+        Column {
+            Text(text = message.author)
+            Text(text = message.body)
+        }
     }
 
     /* To preview composable function in Android Design view use @Preview annotation
