@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.semantics.SemanticsProperties.Text
+import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +18,16 @@ class MainActivity : ComponentActivity() {
 //            Text("Hello World")
 
             /* Call a composable function*/
-            MessageCard(message = "User")
+//            MessageCard(message = "User")
         }
+    }
+
+    /* To preview composable function in Android Design view use @Preview annotation
+       on a function that does not take any parameters */
+    @Preview
+    @Composable
+    fun PreviewComposableFunctions(){
+        MessageCard(message = "User")
     }
 
     /* Define a composable function using @composable annotation */
