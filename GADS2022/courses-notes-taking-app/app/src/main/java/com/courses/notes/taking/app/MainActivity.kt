@@ -1,17 +1,18 @@
 package com.courses.notes.taking.app
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.ui.AppBarConfiguration
 import com.courses.notes.taking.app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    var notePosition = -1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         /*
          * Get passed data via intent
          */
-        var notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
+        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
 
-        if(notePosition != -1)
+        if (notePosition != -1)
             displayNote(notePosition)
 
         /*
@@ -80,6 +81,9 @@ class MainActivity : AppCompatActivity() {
         binding.includeContentMain.spinnerCourses.setSelection(coursePosition)
     }
 
+    /*
+     * Menu
+     */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -90,10 +94,20 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_next -> {
+                moveNext()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun moveNext() {
+        ++notePosition
+        displayNote(notePosition)
     }
 
 //    override fun onSupportNavigateUp(): Boolean {
