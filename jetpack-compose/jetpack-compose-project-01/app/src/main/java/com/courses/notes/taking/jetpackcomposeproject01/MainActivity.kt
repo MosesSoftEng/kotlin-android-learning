@@ -5,10 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.semantics.SemanticsProperties.Text
 import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
+    data class Message(val author: String, val body: String)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,22 +19,25 @@ class MainActivity : ComponentActivity() {
 //            Text("Hello World")
 
             /* Call a composable function*/
-//            MessageCard(message = "User")
+            MessageCard(Message("Android", "Jetpack Compose"))
         }
     }
 
-    /* To preview composable function in Android Design view use @Preview annotation
-       on a function that does not take any parameters */
-    @Preview
-    @Composable
-    fun PreviewComposableFunctions(){
-        MessageCard(message = "User")
-    }
 
     /* Define a composable function using @composable annotation */
     @Composable
-    fun MessageCard(message: String) {
+    fun MessageCard(message: Message) {
         /* Set text for content block */
-        Text(text = "Hello World: $message")
+        Text(text = message.author)
+        Text(text = message.body)
+    }
+
+    /* To preview composable function in Android Design view use @Preview annotation
+   on a function that does not take any parameters */
+    @Preview
+    @Composable
+    fun PreviewComposableFunctions(){
+        // Only visible in preview
+        MessageCard(Message("Preview Author", "Preview Body"))
     }
 }
