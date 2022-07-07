@@ -105,9 +105,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*
+     * Modify menu
+     */
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if(notePosition >= DataManager.notes.lastIndex) {
+
+            /* Null safety */
+            val menuItem = menu?.findItem(R.id.action_next)
+            if(menuItem != null) {
+                menuItem.icon = getDrawable(R.drawable.ic_baseline_block_24)
+                menuItem.isEnabled = false
+            }
+        }
+
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     private fun moveNext() {
         ++notePosition
         displayNote(notePosition)
+
+        invalidateOptionsMenu()
     }
 
 //    override fun onSupportNavigateUp(): Boolean {

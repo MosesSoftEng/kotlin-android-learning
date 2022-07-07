@@ -12,5 +12,5 @@
         android:id="@+id/action_next"
         android:icon="@drawable/ic_baseline_arrow_forward_24"
         android:title="Next"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom|withText" />
 </menu>
