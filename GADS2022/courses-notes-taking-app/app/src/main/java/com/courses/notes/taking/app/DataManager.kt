@@ -24,12 +24,17 @@ object DataManager {
      * Prepare notes.
      */
     private fun initNotes() {
-        var note = NoteInfo(
+        notes.add(NoteInfo(
             CourseInfo("android_intents", "Android Programming with Intents"),
             "My note title",
             "This is a sample note.")
+        )
 
-        notes.add(note)
+        notes.add(NoteInfo(
+            CourseInfo("android lifecycle", "Android lifecycle"),
+            "My note title 2",
+            "This is a sample note 2")
+        )
     }
 
     /**

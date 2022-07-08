@@ -18,20 +18,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         /*
-         * Get passed data via intent
-         */
-        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
-
-        if (notePosition != -1)
-            displayNote(notePosition)
-
-        /*
          * Binding views
          */
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        /*
+         * Get passed data via intent
+         */
+        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
+
+        if (notePosition != -1)
+            displayNote(notePosition)
 
         /*
          * Populate views
@@ -134,4 +134,19 @@ class MainActivity : AppCompatActivity() {
 //        return navController.navigateUp(appBarConfiguration)
 //                || super.onSupportNavigateUp()
 //    }
+
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        if(notePosition == -1)
+            return
+
+        val note = DataManager.notes[notePosition]
+        note.title = binding.includeContentMain.noteTitleEditText.text.toString()
+        note.note = binding.includeContentMain.noteTextEditText.text.toString()
+        note.courseInfo = binding.includeContentMain.spinnerCourses.selectedItem as CourseInfo // Cast
+    }
 }
