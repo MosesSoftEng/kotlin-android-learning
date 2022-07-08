@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    // Instance State
     var notePosition = -1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +27,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         /*
-         * Get passed data via intent
+         * Get passed data via intent or from instance state
          */
-        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, -1)
+        notePosition =
+            savedInstanceState?.getInt(NOTE_POSITION) ?: intent.getIntExtra(NOTE_POSITION, -1)
 
         if (notePosition != -1)
             displayNote(notePosition)
@@ -113,11 +116,11 @@ class MainActivity : AppCompatActivity() {
      * Modify menu
      */
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        if(notePosition >= DataManager.notes.lastIndex) {
+        if (notePosition >= DataManager.notes.lastIndex) {
 
             /* Null safety */
             val menuItem = menu?.findItem(R.id.action_next)
-            if(menuItem != null) {
+            if (menuItem != null) {
                 menuItem.icon = getDrawable(R.drawable.ic_baseline_block_24)
                 menuItem.isEnabled = false
             }
@@ -139,18 +142,27 @@ class MainActivity : AppCompatActivity() {
 //                || super.onSupportNavigateUp()
 //    }
 
+    // Save instance state
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        // Save note position in state
+        outState.putInt(NOTE_POSITION, notePosition)
+    }
+
     override fun onPause() {
         super.onPause()
         saveNote()
     }
 
     private fun saveNote() {
-        if(notePosition == -1)
+        if (notePosition == -1)
             return
 
         val note = DataManager.notes[notePosition]
         note.title = binding.includeContentMain.noteTitleEditText.text.toString()
         note.note = binding.includeContentMain.noteTextEditText.text.toString()
-        note.courseInfo = binding.includeContentMain.spinnerCourses.selectedItem as CourseInfo // Cast
+        note.courseInfo =
+            binding.includeContentMain.spinnerCourses.selectedItem as CourseInfo // Cast
     }
 }

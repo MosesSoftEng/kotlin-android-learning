@@ -49,7 +49,7 @@ class NoteListActivity : AppCompatActivity() {
             /* Intent Extra */
             val activityIntent =
                 Intent(this, MainActivity::class.java) // Add .java for compatibility
-            activityIntent.putExtra(EXTRA_NOTE_POSITION, position)
+            activityIntent.putExtra(NOTE_POSITION, position)
             startActivity(activityIntent)
         }
     }
