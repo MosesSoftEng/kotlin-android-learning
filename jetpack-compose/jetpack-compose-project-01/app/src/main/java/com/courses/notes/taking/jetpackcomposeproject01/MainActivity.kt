@@ -9,11 +9,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.courses.notes.taking.jetpackcomposeproject01.ui.theme.JetpackComposeProject01Theme
 
 class MainActivity : ComponentActivity() {
     data class Message(val author: String, val body: String)
@@ -23,11 +26,14 @@ class MainActivity : ComponentActivity() {
 
         /* Define a content block - setContent */
         setContent {
-            /* Set text for content block using Text composable function */
+            // Apply app base theme to composable functions
+            JetpackComposeProject01Theme {
+                /* Set text for content block using Text composable function */
 //            Text("Hello World")
 
-            /* Call a composable function*/
-            MessageCard(Message("Android", "Jetpack Compose"))
+                /* Call a composable function*/
+                MessageCard(Message("Android", "Jetpack Compose"))
+            }
         }
     }
 
@@ -47,13 +53,17 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .size(40.dp) // Image size
                     .clip(CircleShape) // Image circle shape
+                    .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape) // Add border to image
             )
 
             //  Add horizontal space between.
             Spacer(modifier = Modifier.width(8.dp))
 
             Column {
-                Text(text = message.author)
+                Text(
+                    text = message.author,
+                    color = MaterialTheme.colors.secondaryVariant // Set title color
+                )
 
                 //  Add vertical space between.
                 Spacer(modifier = Modifier.height(8.dp))
@@ -67,8 +77,11 @@ class MainActivity : ComponentActivity() {
    on a function that does not take any parameters */
     @Preview
     @Composable
-    fun PreviewComposableFunctions(){
-        // Only visible in preview
-        MessageCard(Message("Preview Author", "Preview Body"))
+    fun PreviewComposableFunctions() {
+        // Apply app base theme to composable functions
+        JetpackComposeProject01Theme {
+            // Only visible in preview
+            MessageCard(Message("Preview Author", "Preview Body"))
+        }
     }
 }
