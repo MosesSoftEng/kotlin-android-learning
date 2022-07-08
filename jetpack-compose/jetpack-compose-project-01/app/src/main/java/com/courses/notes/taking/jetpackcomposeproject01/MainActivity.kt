@@ -13,6 +13,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
@@ -62,13 +63,16 @@ class MainActivity : ComponentActivity() {
             Column {
                 Text(
                     text = message.author,
-                    color = MaterialTheme.colors.secondaryVariant // Set title color
+                    color = MaterialTheme.colors.secondaryVariant, // Set title color
+                    style = MaterialTheme.typography.body2
                 )
 
                 //  Add vertical space between.
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(text = message.body)
+                Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
+                    Text(text = message.body)
+                }
             }
         }
     }
