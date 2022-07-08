@@ -1,5 +1,6 @@
 package com.courses.notes.taking.jetpackcomposeproject01
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -79,7 +80,12 @@ class MainActivity : ComponentActivity() {
 
     /* To preview composable function in Android Design view use @Preview annotation
    on a function that does not take any parameters */
-    @Preview
+    @Preview(name = "Light Mode") // Ligth mode
+    @Preview( // Dark mode
+        uiMode = Configuration.UI_MODE_NIGHT_YES,
+        showBackground = true,
+        name = "Dark Mode"
+    )
     @Composable
     fun PreviewComposableFunctions() {
         // Apply app base theme to composable functions
@@ -88,4 +94,6 @@ class MainActivity : ComponentActivity() {
             MessageCard(Message("Preview Author", "Preview Body"))
         }
     }
+
+
 }
