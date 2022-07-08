@@ -39,4 +39,6 @@ data class CourseInfo(val courseId: String, val title: String) {
  *  copy(), equals() and hashCode() pair, toString() created form of the primary constructor and
  *  componentN() functions - used for destructuring declarations.
  */
-data class NoteInfo(var courseInfo: CourseInfo, var title: String, var note: String)
+//data class NoteInfo(var courseInfo: CourseInfo, var title: String, var note: String)  // Not nullable
+//data class NoteInfo(var courseInfo: CourseInfo?, var title: String?, var note: String?)  // Nullable
+data class NoteInfo(var courseInfo: CourseInfo? = null, var title: String? = null, var note: String? = null) // Set null as default value

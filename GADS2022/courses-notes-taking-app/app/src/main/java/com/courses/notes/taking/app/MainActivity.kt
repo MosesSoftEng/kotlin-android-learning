@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         /*
          * Binding views
          */
@@ -32,6 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         if (notePosition != -1)
             displayNote(notePosition)
+        else {
+            // Create a new note
+            DataManager.notes.add(NoteInfo())
+            notePosition = DataManager.notes.lastIndex
+        }
 
         /*
          * Populate views

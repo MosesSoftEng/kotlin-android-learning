@@ -53,4 +53,11 @@ class NoteListActivity : AppCompatActivity() {
             startActivity(activityIntent)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        // Update adapter
+        (binding.includeContentNodeList.listNotesListView.adapter as ArrayAdapter<NoteInfo>).notifyDataSetChanged()
+    }
 }
