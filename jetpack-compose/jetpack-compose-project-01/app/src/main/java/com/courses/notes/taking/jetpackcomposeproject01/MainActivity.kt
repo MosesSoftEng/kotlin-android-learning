@@ -8,10 +8,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.foundation.lazy.items
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -23,8 +25,16 @@ import com.courses.notes.taking.jetpackcomposeproject01.ui.theme.JetpackComposeP
 class MainActivity : ComponentActivity() {
     data class Message(val author: String, val body: String)
 
+    // Create a list of messages
+    val messages = List(2) {
+        Message("User0" ,"Message0")
+        Message("User1" ,"Message1")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         /* Define a content block - setContent */
         setContent {
@@ -34,7 +44,18 @@ class MainActivity : ComponentActivity() {
 //            Text("Hello World")
 
                 /* Call a composable function*/
-                MessageCard(Message("Android", "Jetpack Compose"))
+//                MessageCard(Message("Android", "Jetpack Compose"))
+
+                Conversation(messages)
+            }
+        }
+    }
+
+    @Composable
+    private fun Conversation(messages: List<Message>) {
+        LazyColumn {
+            items(messages) { message ->
+                MessageCard(message)
             }
         }
     }
@@ -91,7 +112,8 @@ class MainActivity : ComponentActivity() {
         // Apply app base theme to composable functions
         JetpackComposeProject01Theme {
             // Only visible in preview
-            MessageCard(Message("Preview Author", "Preview Body"))
+//            MessageCard(Message("Preview Author", "Preview Body"))
+            Conversation(messages)
         }
     }
 
