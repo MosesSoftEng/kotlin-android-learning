@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.courses.notes.taking.app.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -78,6 +79,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayNote(notePosition: Int) {
+        if(notePosition > DataManager.notes.lastIndex) {
+            showMessage("Note not found")
+
+            return
+        }
+
         val note = DataManager.notes.get(notePosition)
         binding.includeContentMain.noteTitleEditText.setText(note.title)
         binding.includeContentMain.noteTextEditText.setText(note.note)
@@ -105,11 +112,21 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> true
             R.id.action_next -> {
-                moveNext()
+                if(notePosition < DataManager.notes.lastIndex)
+                    moveNext()
+                else {
+                    val message = "No more notes"
+
+                    showMessage(message)
+                }
                 return true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showMessage(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     /*
