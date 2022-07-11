@@ -36,9 +36,7 @@ class MainActivity : AppCompatActivity() {
         if (notePosition != -1)
             displayNote(notePosition)
         else {
-            // Create a new note
-            DataManager.notes.add(NoteInfo())
-            notePosition = DataManager.notes.lastIndex
+            createNewNote()
         }
 
         /*
@@ -76,6 +74,12 @@ class MainActivity : AppCompatActivity() {
 //            Snackbar.make(view, "Value $originalValue changed to $newValue", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
 //        }
+    }
+
+    private fun createNewNote() {
+        // Create a new note
+        DataManager.notes.add(NoteInfo())
+        notePosition = DataManager.notes.lastIndex
     }
 
     private fun displayNote(notePosition: Int) {
@@ -177,6 +181,7 @@ class MainActivity : AppCompatActivity() {
             return
 
         val note = DataManager.notes[notePosition]
+
         note.title = binding.includeContentMain.noteTitleEditText.text.toString()
         note.note = binding.includeContentMain.noteTextEditText.text.toString()
         note.courseInfo =
