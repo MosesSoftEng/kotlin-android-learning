@@ -5,18 +5,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.lazy.items
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
@@ -27,15 +28,12 @@ class MainActivity : ComponentActivity() {
 
     // Create a list of messages
     val messages = List(2) {
-        Message("User0" ,"Message0")
-        Message("User1" ,"Message1")
+        Message("User0" ,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+        Message("User1" ,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
         /* Define a content block - setContent */
         setContent {
             // Apply app base theme to composable functions
@@ -82,7 +80,14 @@ class MainActivity : ComponentActivity() {
             //  Add horizontal space between.
             Spacer(modifier = Modifier.width(8.dp))
 
-            Column {
+            // We keep track if the message is expanded or not in this
+            // variable
+            var isExpanded by remember { mutableStateOf(false) }
+
+            Column (
+                modifier = Modifier.clickable { isExpanded = !isExpanded }
+            )
+            {
                 Text(
                     text = message.author,
                     color = MaterialTheme.colors.secondaryVariant, // Set title color
@@ -90,10 +95,17 @@ class MainActivity : ComponentActivity() {
                 )
 
                 //  Add vertical space between.
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(4.dp))
 
                 Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
-                    Text(text = message.body)
+                    Text(
+                        text = message.body,
+                        modifier = Modifier.padding(all = 4.dp),
+                        // If the message is expanded, we display all its content
+                        // otherwise we only display the first line
+                        maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                        style = MaterialTheme.typography.body2
+                    )
                 }
             }
         }
@@ -116,6 +128,4 @@ class MainActivity : ComponentActivity() {
             Conversation(messages)
         }
     }
-
-
 }
