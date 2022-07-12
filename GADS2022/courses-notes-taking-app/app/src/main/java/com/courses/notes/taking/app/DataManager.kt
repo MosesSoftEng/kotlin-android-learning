@@ -49,7 +49,6 @@ object DataManager {
     }
 }
 
-
 /**
  * The class type implementation
  */

@@ -10,12 +10,14 @@ import com.courses.notes.taking.app.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    // Log tag requires reflection library. implementation "org.jetbrains.kotlin:kotlin-reflect"
+    private val tag = this::class.simpleName
+
     // Instance State
-    var notePosition = -1;
+    var notePosition = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         if (notePosition != -1)
             displayNote(notePosition)
-        else {
+        else
             createNewNote()
-        }
 
         /*
          * Populate views
