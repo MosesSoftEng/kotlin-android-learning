@@ -1,6 +1,7 @@
 package com.courses.notes.taking.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        Log.i(tag, "info log")
 
         /*
          * Get passed data via intent or from instance state
