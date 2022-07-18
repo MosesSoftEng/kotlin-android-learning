@@ -1,5 +1,7 @@
 package com.courses.notes.taking.app
 
+import android.icu.text.CaseMap
+
 /**
  * The object singleton implementation. Single class implementation
  * Singleton make one copy that can be used in different activities.
@@ -46,6 +48,13 @@ object DataManager {
 
         course = CourseInfo("android_asyc", "Android Async programming and Services")
         courses.set(course.courseId, course)
+    }
+
+    /**
+     * Function to add new note.
+     */
+    fun addNote(course: CourseInfo, noteTitle: String, noteText: String): Int {
+        return 0
     }
 }
 
