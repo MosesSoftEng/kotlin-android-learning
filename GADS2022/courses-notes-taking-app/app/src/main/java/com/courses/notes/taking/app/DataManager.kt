@@ -54,7 +54,10 @@ object DataManager {
      * Function to add new note.
      */
     fun addNote(course: CourseInfo, noteTitle: String, noteText: String): Int {
-        return 0
+        val note  = NoteInfo(course, noteTitle, noteText)
+        notes.add(note)
+
+        return notes.lastIndex
     }
 }
 
