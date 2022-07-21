@@ -25,7 +25,7 @@ object DataManager {
     /**
      * Prepare notes.
      */
-    private fun initNotes() {
+    public fun initNotes() {
         notes.add(NoteInfo(
             CourseInfo("android_intents", "Android Programming with Intents"),
             "My note title",
@@ -58,6 +58,17 @@ object DataManager {
         notes.add(note)
 
         return notes.lastIndex
+    }
+
+    /**
+     * Search for a note
+     */
+    fun findNote(course: CourseInfo, noteTitle: String, noteText: String): NoteInfo? {
+        for(note in notes)
+                if(course == note.courseInfo && noteTitle == note.title &&
+                    noteText == note.note)
+                    return note
+        return null
     }
 }
 
