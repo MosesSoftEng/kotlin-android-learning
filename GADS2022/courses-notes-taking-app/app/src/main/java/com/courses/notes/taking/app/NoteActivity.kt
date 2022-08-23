@@ -10,7 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.courses.notes.taking.app.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 

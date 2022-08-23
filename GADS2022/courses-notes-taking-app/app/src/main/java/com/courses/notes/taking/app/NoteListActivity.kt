@@ -22,7 +22,7 @@ class NoteListActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener { view ->
             val activityIntent =
-                Intent(this, MainActivity::class.java) // Add .java for compatibility
+                Intent(this, NoteActivity::class.java) // Add .java for compatibility
             startActivity(activityIntent)
 
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -48,7 +48,7 @@ class NoteListActivity : AppCompatActivity() {
 
             /* Intent Extra */
             val activityIntent =
-                Intent(this, MainActivity::class.java) // Add .java for compatibility
+                Intent(this, NoteActivity::class.java) // Add .java for compatibility
             activityIntent.putExtra(NOTE_POSITION, position)
             startActivity(activityIntent)
         }

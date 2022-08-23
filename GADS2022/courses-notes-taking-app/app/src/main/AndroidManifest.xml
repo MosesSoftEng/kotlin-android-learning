@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".NoteActivity"
             android:exported="true"
             android:label="Edit Note"
             android:theme="@style/Theme.CoursesNotesTakingApp.NoActionBar">

@@ -3,13 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/drawable/orange_rectangle.xml" value="0.1875" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout-land/content_main.xml" value="0.17" />
-        <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/activity_main.xml" value="0.2807971014492754" />
+        <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/activity_note_list.xml" value="0.11388888888888889" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/content_note_list.xml" value="0.1" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/fragment_first.xml" value="0.2807971014492754" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/fragment_second2.xml" value="0.18085106382978725" />
+        <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/layout/item_note_list.xml" value="0.25" />
         <entry key="..\:/Learning/kotlin-android-learning/GADS2022/courses-notes-taking-app/app/src/main/res/menu/menu_main.xml" value="0.1" />
       </map>
     </option>
