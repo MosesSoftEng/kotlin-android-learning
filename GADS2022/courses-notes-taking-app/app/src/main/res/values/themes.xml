@@ -22,4 +22,10 @@
     <style name="Theme.CoursesNotesTakingApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.CoursesNotesTakingApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CourseTitle">
+        <item name="android:textColor">@color/pluralsight_orange</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12pt</item>
+    </style>
 </resources>
