@@ -8,14 +8,20 @@ import database.schedule.Schedule
 import database.schedule.ScheduleDao
 
 /**
- * Manage models, DAO classes, and any database setup.
+ * Migrations
+ *
+ * Define the database, Manage models, DAO classes, and any database setup.
+ *
+ * @database - annotation to mark class as a database entity
+ * entities - list table class entity to be created in the database
+ * version - Used to mark migration effect table schema changes, when increased table structure is updated. (She)
  */
 @Database(entities = arrayOf(Schedule::class), version = 1/* For migration updates */)
 abstract class AppDatabase: RoomDatabase() {
-    /* Allow DAO classes access to other classes */
+    /* Link DOA class to database, Allow DAO classes access to other classes */
     abstract fun scheduleDao(): ScheduleDao
 
-    /* Ensure single instance of this class */
+    /* Singleton database instance - Ensure single instance of this class */
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null

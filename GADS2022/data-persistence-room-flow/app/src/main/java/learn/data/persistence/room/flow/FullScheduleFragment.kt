@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import busschedule.BusScheduleApplication
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import viewmodels.BusScheduleViewModel
 import viewmodels.BusScheduleViewModelFactory
+import learn.data.persistence.room.flow.databinding.FullScheduleFragmentBinding
 
 class FullScheduleFragment: Fragment() {
 
