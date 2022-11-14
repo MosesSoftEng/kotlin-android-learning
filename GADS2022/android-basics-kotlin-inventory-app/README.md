@@ -34,3 +34,15 @@ Getting Started
 ---------------
 
 1. Download and run the app.
+
+
+
+# Project setup
+
+# Error
+The project is using an incompatible version (AGP 7.3.0) of the Android Gradle plugin. 
+
+Change Android Gradle Plugin version in project build.grade from 7.3.0 to 7.2.1
+
+dependencies {
+    classpath 'com.android.tools.build:gradle:7.2.1'

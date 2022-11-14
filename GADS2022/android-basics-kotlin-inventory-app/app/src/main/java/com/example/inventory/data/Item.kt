@@ -21,7 +21,7 @@ import androidx.room.PrimaryKey
 import java.text.NumberFormat
 
 /**
- * Entity data class represents a single row in the database.
+ * Entity data class represents a single row in the database table.
  */
 @Entity
 data class Item(
